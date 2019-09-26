@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void input(twoDarray<int> &A)
+void input(twoDimArray<int> &A)
 {
 	char ans;
 	cout << "Array currently " << A.getrows() << " x " << A.getcols();
@@ -26,7 +26,7 @@ void input(twoDarray<int> &A)
 	}
 }
 
-void print(twoDarray<int> &A)
+void print(twoDimArray<int> &A)
 {
 	cout << endl;
 	for(int r=0; r<A.getrows(); r++)
@@ -39,7 +39,7 @@ void print(twoDarray<int> &A)
 	cout << endl;
 }
 
-void multiply(twoDarray<int> &A, twoDarray<int> &B, twoDarray<int> &R)
+void multiply(twoDimArray<int> &A, twoDimArray<int> &B, twoDimArray<int> &R)
 {
 	if(A.getcols() !=  B.getrows())
 	{ cout << "Incorrect matrix dimensions!\n"; abort(); }
@@ -56,7 +56,7 @@ void multiply(twoDarray<int> &A, twoDarray<int> &B, twoDarray<int> &R)
 
 int main()
 {
-	twoDarray<int> A(2,2), B(2,2), C(1,1);
+	twoDimArray<int> A(2,2), B(2,2), C(1,1);
 	cout << "Input array A:\n";
 	input(A); print(A);
 	cout << "Input array B:\n";
