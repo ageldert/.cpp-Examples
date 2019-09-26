@@ -1,3 +1,14 @@
+/*
+Two Dimensional Array Example
+
+This code example performs matrix multiplication using the twoDimArray class defined in twoDimArray.h.
+The user simply inputs two matrices of any dimensions, which are multiplied (if possible).
+
+--- Created by Aaron Geldert at the University of Miami
+--- ECE 218 (Data Structures)
+--- Copyright 2018. All Rights Reserved.
+*/
+
 #include <iostream>
 #include "twoDimArray.h"
 
