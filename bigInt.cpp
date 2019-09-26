@@ -1,10 +1,23 @@
+/*
+Big Integer
+
+This code example creates a BigInt class with some basic arithmetic functionality.
+BigInt inherits from vector, storing each digit as a separate int. All operations are performed digit by digit.
+BigInt can therefore greatly exceed the ~4 billion values of a single 32-bit int.
+
+--- Created by Aaron Geldert at the University of Miami
+--- ECE 218 (Data Structures)
+--- Copyright 2018. All Rights Reserved.
+*/
+
+
 #include <vector>
 #include <iostream>
 using namespace std;
 
 class BigInt: public vector<int>
 {
-  public:
+public:
 
   void become(string input)
   {	clear();
@@ -71,8 +84,7 @@ class BigInt: public vector<int>
   }
 
   void add(BigInt &a, BigInt &b)
-  {
-	clear();
+  {	clear();
 	int pos=0, carry=0, sum=0;
 	while(pos < a.size() || pos < b.size() || carry!=0)
 	{	sum = a.get_digit(pos) + b.get_digit(pos) + carry;
@@ -134,6 +146,7 @@ class BigInt: public vector<int>
 	}
 	copy(result);
   }
+  
   BigInt()
   {}
 
@@ -148,9 +161,8 @@ void check(string input)			//check if wanting to exit
 }
 
 int main()
-{
-  BigInt c("0");
-  cout <<"SUPERCALCULATOR: Enter positive integers only. Functions include +, -, *, !.\n";
+{ BigInt c("0");
+  cout <<"BigInt Calculator: Enter positive integers only. Functions include +, -, *, !.\n";
   cout <<"Type x to exit\n";
   string input;
   char op;
