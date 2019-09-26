@@ -1,5 +1,5 @@
 #include <iostream>
-#include "HW2.h"
+#include "twoDimArray.h"
 
 using namespace std;
 
