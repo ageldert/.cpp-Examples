@@ -1,7 +1,7 @@
 /*
 Reverse Polish Calculator
 
-This code example implements a vector to operate as a calculator using reverse polish notation (RPN).
+This code example implements a C++ vector to operate as a calculator using reverse polish notation (RPN).
 For example: 
 "1 2 + =" 	i.e. 1 + 2 = 3
 "8 5 3 - / =" 	i.e. 8 / (5 - 3) = 4
