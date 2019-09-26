@@ -6,7 +6,7 @@ For example:
 "1 2 + =" 	i.e. 1 + 2 = 3
 "8 5 3 - / =" 	i.e. 8 / (5 - 3) = 4
 
---- Created by Aaron Geldert (University of Miami)
+--- Created by Aaron Geldert at the University of Miami
 --- ECE 218 (Data Structures)
 --- Copyright 2018. All Rights Reserved.
 */
