@@ -1,3 +1,15 @@
+/*
+Two Dimensional Array (header)
+
+This code example defines the class for a two dimensional resizeable array, using a typename template.
+The two dimensional array and its operations are implemented with (a pointer to) a single array. 
+See twoDimArray.cpp for more example code.
+
+--- Created by Aaron Geldert at the University of Miami
+--- ECE 218 (Data Structures)
+--- Copyright 2018. All Rights Reserved.
+*/
+
 #include <iostream>
 using namespace std;
 
