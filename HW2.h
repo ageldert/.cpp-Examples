@@ -3,14 +3,14 @@ using namespace std;
 
 template <typename T>
 
-class twoDarray
+class twoDimArray
 {
   protected:
 	T * data;
 	int rows, cols;
 
   public:
-	twoDarray(int d1, int d2)
+	twoDimArray(int d1, int d2)
 	{	rows = d1; cols = d2;
 		data = new T[rows*cols];	}
 	T & get(int r, int c)
@@ -36,6 +36,6 @@ class twoDarray
 		delete [] data;
 		data = newdata; }
 
-	~twoDarray()
+	~twoDimArray()
 	{ delete [] data; }
 };
