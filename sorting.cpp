@@ -1,3 +1,18 @@
+/*
+Sorting Method Comparison
+
+This code example compares implementations of basic selection and bubble sorts.
+Identical arrays of randomly generated 10-character strings are generated, then sorted and timed. 
+Array size can be specified with an input argument, default is 1000.
+
+Results showed that bubble sort performs almost 3 times slower than selection sort, regardless of array size.
+Both algorithms perform at O(N^2), so doubling the size of data will quadruple the number of operations to perform.
+
+--- Created by Aaron Geldert at the University of Miami
+--- ECE 218 (Data Structures)
+--- Copyright 2018. All Rights Reserved.
+*/
+
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
