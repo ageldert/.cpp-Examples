@@ -1,3 +1,14 @@
+/*
+Binary Tree Database
+This example builds a binary tree of persons and their data.
+Makes use of recursive methods to navigate the binary tree.
+Database is read in from exampleDatabase.txt, available in the .cpp-Examples repo.
+
+--- Created by Aaron Geldert at the University of Miami
+--- ECE 218 (Data Structures)
+--- Copyright 2018. All Rights Reserved.
+*/
+
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -7,7 +18,7 @@ using namespace std;
 struct person
 {	int ssn, bday, zip;
 	string fn, ln;
-	bool hasdog;
+	bool hasDog;
 	person(int s, int b, string f, string l, int z)
 	{	ssn=s; bday=b; fn=f; ln=l; zip=z, hasdog=false;}
 	int get_yr()
@@ -46,7 +57,7 @@ void printAll(person * p)
 {	cout << endl << p->fn <<" "<< p->ln;
 	cout << "\nDOB: " << p->get_mon() <<" "<< p->get_day() <<" "<< p->get_yr() << endl;
 	cout << "SSN: " << p->ssn << "\tZip: " << p->zip << endl;
-	if(p->hasdog) cout << "Dog owner" << endl;}
+	if(p->hasDog) cout << "Dog owner" << endl;}
 
 void printName(person * p)
 {	cout << endl << p->fn <<" "<< p->ln <<"\n";}
@@ -100,7 +111,7 @@ void find(node * n, string f, string l, bool &b)
 	{	b = true;
 		printAll(n->data);}
 	find(n->right,f,l,b);}
-void FIND(node * root)
+void findName(node * root)
 {	string f, l;
 	cout << "Enter first and last name: "; cin >> f;cin >> l;
 	cout << "...searching for '" << f <<" "<< l <<"'...\n";
@@ -116,7 +127,7 @@ void zip(node * n, int z, bool &b)
 	{	b = true;
 		printName(n->data);}
 	zip(n->right,z,b);}
-void ZIP(node * root)
+void findZip(node * root)
 {	int z;
 	cout << "Zip code: "; cin >> z;
 	cout << "...searching for residents in " << z <<"...\n";
@@ -132,7 +143,7 @@ void all(node * n, string l, bool &b)
 	{	b = true;
 		printAll(n->data);}
 	all(n->right,l,b);}
-void ALL(node * root)
+void findAll(node * root)
 {	string l;
 	cout << "Enter last name: "; cin >> l;
 	cout << "...searching for '" << l <<"'...\n";
@@ -141,20 +152,20 @@ void ALL(node * root)
 	if(!found)	cout << "No matching persons found in database.\n";
 }
 
-void hasdog(node * n, string f, string l, bool &b)
+void hasDog(node * n, string f, string l, bool &b)
 {	if(n==NULL)	return;
-	hasdog(n->left,f,l,b);
+	hasDog(n->left,f,l,b);
 	if(n->data->fn == f && n->data->ln == l)
 	{	b = true;
-		n->data->hasdog=true;
+		n->data->hasDog=true;
 		cout << "Recorded " << f << " " << l <<" is a dog owner.\n";}
-	hasdog(n->right,f,l,b);}
-void HASDOG(node * root)
+	hasDog(n->right,f,l,b);}
+void setHasDog(node * root)
 {	string f, l;
 	cout << "Enter first and last name: "; cin >> f;cin >> l;
 	cout << "...searching for '" << f <<" "<< l <<"'...\n";
 	bool found = false;
-	hasdog(root, f, l, found);
+	hasDog(root, f, l, found);
 	if(!found)	cout << "No matching persons found in database.\n";
 }
 
@@ -169,7 +180,7 @@ person *oldest(node * n)
 		result = oldr; 
 	return result;
 }
-void OLDEST(node * root)
+void findOldest(node * root)
 {	person * old = oldest(root);
 	if(old != NULL)	printOld(old);
 	else cout << "\nDatabase is empty.\n";
@@ -177,7 +188,7 @@ void OLDEST(node * root)
 
 int main()
 {	node * root = NULL;
-	ifstream fin("/home/218/database.txt");
+	ifstream fin("exampleDatabase.txt");		// data file for the database
 	if(fin.fail())
 	{	cout << "File could not be opened.";
 		exit(0);}	
@@ -188,11 +199,11 @@ int main()
 	while(true)
 	{	cout << "Command: ";
 		cin >> in;
-		if(in[0]=='f'||in[0]=='F')	FIND(root);
-		else if(in[0]=='z'||in[0]=='Z')	ZIP(root);
-		else if(in[0]=='a'||in[0]=='A')	ALL(root);
-		else if(in[0]=='h'||in[0]=='H')	HASDOG(root);
-		else if(in[0]=='o'||in[0]=='O')	OLDEST(root);
+		if(in[0]=='f'||in[0]=='F')	findName(root);
+		else if(in[0]=='z'||in[0]=='Z')	findZip(root);
+		else if(in[0]=='a'||in[0]=='A')	findAll(root);
+		else if(in[0]=='h'||in[0]=='H')	setHasDog(root);
+		else if(in[0]=='o'||in[0]=='O')	findOldest(root);
 		else if(in[0]=='e'||in[0]=='E')	exit(0);
 		else cout << "Invalid input\n";
 	}
