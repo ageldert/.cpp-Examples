@@ -1,4 +1,13 @@
+/*
+Binary Tree
+This example builds a binary tree of strings through user entry. 
+The tree can also be searched for a matching string, case-insensitive.
+Implements a basic pointer-based binary tree.
 
+--- Created by Aaron Geldert at the University of Miami
+--- ECE 318 (Algorithms)
+--- Copyright 2019. All Rights Reserved.
+*/
 
 
 #include <string>
@@ -18,17 +27,14 @@ struct stringnode
 void add_node(string s, stringnode *&x)
 {	if (x == NULL)		// root case
 	{	x = new stringnode(s);
-		// cout << "Added first node.\n";
 		return; }
 	stringnode * ptr = x, * prev = NULL;
 	while (ptr != NULL)	// navigate until we can add a new node
 	{ 	if (ptr->data > s)
-		{	// cout << "Moving left\n";
-			prev = ptr;
+		{	prev = ptr;
 			ptr = ptr->left; }
 		else if (ptr->data < s)
-		{	// cout << "Moving right\n";
-			prev = ptr;
+		{	prev = ptr;
 			ptr = ptr->right; }
 		else
 		{	cout << "Duplicate ignored.\n";
@@ -45,14 +51,8 @@ void search(string s, stringnode *x)
 	{	if (x == NULL)
 		{  	cout << "NO - Could not find " << s << ".\n";
 		   	break; }
-		if (x->data > s)
-		{	// cout << "Moved left\n";
-			x = x->left;
-		}
-		else if (x->data < s)
-		{	// cout << "Moved right\n";
-			x = x->right;
-		}
+		if (x->data > s) x = x->left;
+		else if (x->data < s) x = x->right;
 		else
 		{ 	cout << "YES - Found " << s << ".\n";
 			return; }
