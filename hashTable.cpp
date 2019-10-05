@@ -1,6 +1,12 @@
-
-
-
+/*
+Hash Table
+This example reads in a database of named US locations, adding them to a hash table.
+The hash table uses closed addressing (open hashing), and collision statistics are displayed.
+After database creation, the user can search location names to view the entries in the hash table. 
+--- Created by Aaron Geldert at the University of Miami
+--- ECE 318 (Algorithms)
+--- Copyright 2019. All Rights Reserved.
+*/
 
 #include <iostream>
 #include <string>
@@ -68,7 +74,6 @@ class Hashtable
 		int pos = hash(key) % size;
 		x->next = table[pos];
 		table[pos] = x;
-//		cout << "Added " << x->state << " " << x->name << " at " << pos << endl;
 	}
 
 	void stats()
@@ -76,7 +81,7 @@ class Hashtable
 		const int longest = 15;		// estimate max # entries per hash value
 		int counts[longest+1];
 		for (int i=0; i<= longest; i++)
-			counts[i] = 0;		// initialize our length counts to 0
+			counts[i] = 0;		// initialize all length counts to 0
 		for (int j=0; j<size; j++)
 		{	Place * temp = table[j];
 			int len = 0;
@@ -85,7 +90,7 @@ class Hashtable
 				temp = temp->next;
 			}
 			if(len>longest) len = longest;
-			counts[len]++;		// we found 1 more linked list of that length
+			counts[len]++;		// found 1 more linked list of that length
 		}
 		for (int y=0; y<=longest; y++)
 		{	cout << setw(3) << y << ": "
@@ -183,7 +188,7 @@ void search(Hashtable &data)
 
 int main()
 {
-	ifstream fin("/home/www/class/een318/named-places.txt");
+	ifstream fin("named-places.txt");
 	if(fin.fail())
 	{	cerr << "Failed to access .txt\n";
 		exit(0);
